@@ -573,6 +573,11 @@ MonoBehaviour:
   prefabList:
   - {fileID: 4304531606258954033, guid: 4a7b0ef0da04ef04c8c7c8272e517cb9, type: 3}
   - {fileID: 6642170588540095568, guid: c42906238e70ead4ebbbefff63a8fd45, type: 3}
+  animatorControllers:
+  - {fileID: 9100000, guid: 9d673e66b8155034b95ff251dca34a2e, type: 2}
+  - {fileID: 9100000, guid: 6d57b8b2883e85446b8b2cff1497e1cc, type: 2}
+  - {fileID: 9100000, guid: 1014164db1172ac4fab215095d24a9a8, type: 2}
+  targetGameObject: {fileID: 1000870263556206221}
 --- !u!1 &302821016
 GameObject:
   m_ObjectHideFlags: 0
@@ -683,7 +688,6 @@ MonoBehaviour:
   pipeSpawnPosition: {fileID: 1946128113}
   pipeMinSpawnHeight: {fileID: 991615477}
   pipeMaxSpawnHeight: {fileID: 1314939334}
-  prefabList: []
 --- !u!1 &313031118
 GameObject:
   m_ObjectHideFlags: 0

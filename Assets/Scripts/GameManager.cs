@@ -21,6 +21,10 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private List<GameObject> prefabList; 
 
+     [SerializeField] private List<RuntimeAnimatorController> animatorControllers;
+
+    public GameObject targetGameObject;
+
 
     public static GameManager Instance;
 
@@ -80,5 +84,21 @@ public class GameManager : MonoBehaviour
             int randomIndex = Random.Range(0, prefabList.Count);
             Instantiate(prefabList[randomIndex], Vector3.zero, Quaternion.identity);
         }
+
+        if (targetGameObject != null && animatorControllers.Count > 0)
+        {
+           
+            int randomAnimatorIndex = Random.Range(0, animatorControllers.Count);
+            RuntimeAnimatorController randomAnimatorController = animatorControllers[randomAnimatorIndex];
+
+            Animator targetAnimator = targetGameObject.GetComponent<Animator>();
+
+      
+            if (targetAnimator != null)
+            {
+                targetAnimator.runtimeAnimatorController = randomAnimatorController;
+            }
+        }
     }
+
 }
