@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
@@ -16,10 +17,11 @@ public class GameManager : MonoBehaviour
     public int maxScoreReached { get; private set; }
     public bool isGameOver { get; private set; }
 
-
     [SerializeField] private TextMeshProUGUI TopScore;
 
-    // Singleton!
+    [SerializeField] private List<GameObject> prefabList; 
+
+
     public static GameManager Instance;
 
     private void Awake()
@@ -46,8 +48,8 @@ public class GameManager : MonoBehaviour
 
         if (score > maxScoreReached)
         {
-            maxScoreReached = score; // Actualiza el puntaje máximo alcanzado si el puntaje actual es mayor
-            PlayerPrefs.SetInt("MaxScore", maxScoreReached); // Guarda el puntaje máximo en PlayerPrefs
+            maxScoreReached = score;
+            PlayerPrefs.SetInt("MaxScore", maxScoreReached);
         }
 
         onGameOver?.Invoke();
@@ -69,7 +71,14 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        maxScoreReached = PlayerPrefs.GetInt("MaxScore", 0); 
-        TopScore.text = ("Top Score: " + maxScoreReached.ToString()); 
+        maxScoreReached = PlayerPrefs.GetInt("MaxScore", 0);
+        TopScore.text = ("Top Score: " + maxScoreReached.ToString());
+
+   
+        if (prefabList.Count > 0)
+        {
+            int randomIndex = Random.Range(0, prefabList.Count);
+            Instantiate(prefabList[randomIndex], Vector3.zero, Quaternion.identity);
+        }
     }
 }
