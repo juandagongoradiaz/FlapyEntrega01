@@ -14,18 +14,11 @@ public class PipeSpawner : MonoBehaviour
     [SerializeField] private Transform pipeMaxSpawnHeight;
 
     private List<GameObject> pipePool = new List<GameObject>();
-    [SerializeField] private List<GameObject> prefabList;
 
     private void Start()
     {
         InitializePool();
         StartCoroutine(SpawnPipes());
-
-        if (prefabList.Count > 0)
-        {
-            int randomIndex = Random.Range(0, prefabList.Count);
-            Instantiate(prefabList[randomIndex], Vector3.zero, Quaternion.identity);
-        }
     }
 
     private void InitializePool()
